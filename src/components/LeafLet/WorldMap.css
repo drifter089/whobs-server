@@ -1,0 +1,16 @@
+/* .world-map {
+    width: 800px;
+    height: 600px;
+  }
+  
+  .popup-header {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+   */
+
+.leaflet-container {
+  width: 100vw;
+  height: 80vh;
+}
