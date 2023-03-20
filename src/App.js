@@ -1,7 +1,7 @@
 import "./App.css";
 import WorldMap from "./components/LeafLet/MapSelector";
 import SimpleMaps from "./components/MapSection/SimpleMaps";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import NavMenu from "./components/NavMenu/NavMenu";
 import Intro from "./components/Introduction/Intro";
 import MapForm from "./components/MapSection/MapForm";
@@ -14,11 +14,12 @@ function App() {
           <Grid item xs={12}>
             <div
               style={{
-                backgroundColor: "green",
                 height: "120px",
               }}
             >
-              Build your own zero-emission electricity supply
+              <Typography variant="h2" component="div">
+                Build your own zero-emission electricity supply
+              </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={3} lg={2}>
