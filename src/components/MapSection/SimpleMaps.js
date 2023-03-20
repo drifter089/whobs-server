@@ -15,28 +15,22 @@ import {
 import mapData2 from "../../assets/countries.json";
 import { geoCentroid, geoArea } from "d3-geo";
 
-const SimpleMaps = () => {
-  const [selectedCountry, setSelectedCountry] = useState(null);
-
+const SimpleMaps = (props) => {
   useEffect(() => {
     // console.log(mapData2);
   }, []);
 
   const handleClick = (geo) => () => {
-    console.log(geo);
-    setSelectedCountry(geo.properties.ADMIN);
+    // console.log(geo);
+    if (props.selectedCountry === geo.properties.ADMIN) {
+      props.setSelectedCountry("");
+    } else {
+      props.setSelectedCountry(geo.properties.ADMIN);
+    }
   };
 
   return (
-    <ComposableMap
-      // projectionConfig={{
-      //   rotate: [-10, 0, 0],
-      //   scale: 147,
-      // }}
-      width={900}
-      height={400}
-      fill={"yellow"}
-    >
+    <ComposableMap fill={"yellow"} height={400}>
       <ZoomableGroup zoom={1} center={[0, 0]}>
         <Geographies geography={mapData2}>
           {({ geographies }) => (
@@ -54,7 +48,7 @@ const SimpleMaps = () => {
                       hover: {
                         outline: "none",
                         fill:
-                          selectedCountry === geo.properties.ADMIN
+                          props.selectedCountry === geo.properties.ADMIN
                             ? "green"
                             : "orange",
                       },
@@ -64,7 +58,7 @@ const SimpleMaps = () => {
                       },
                     }}
                     fill={
-                      selectedCountry === geo.properties.ADMIN
+                      props.selectedCountry === geo.properties.ADMIN
                         ? "green"
                         : "grey"
                     }
@@ -97,7 +91,7 @@ const SimpleMaps = () => {
                           style={{
                             fontFamily: "system-ui",
                             fill:
-                              selectedCountry === geo.properties.ADMIN
+                              props.selectedCountry === geo.properties.ADMIN
                                 ? "green"
                                 : "orange",
                           }}
